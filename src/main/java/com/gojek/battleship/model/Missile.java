@@ -10,5 +10,8 @@ package com.gojek.battleship.model;
  * @author prabandi
  */
 public class Missile extends BoardItem{
-    
+    public Missile(BoardCell boardCell){
+        super(boardCell);
+    }
+	
 }

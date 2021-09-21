@@ -10,5 +10,9 @@ package com.gojek.battleship.model;
  * @author prabandi
  */
 public class BoardItem {
-    
+    private BoardCell boardCell;
+	
+    public BoardItem(BoardCell boardCell) {
+        this.boardCell = boardCell;
+    }
 }
