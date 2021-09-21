@@ -14,7 +14,7 @@ public class Ship extends BoardItem{
     
     public Ship(BoardCell boardCell){
         super(boardCell);
-        isKilled = false;
+        this.isKilled = false;
     }
     
     public boolean isKilled() {

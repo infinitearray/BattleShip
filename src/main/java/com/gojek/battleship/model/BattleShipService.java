@@ -50,9 +50,9 @@ public class BattleShipService {
             BufferedReader br = new BufferedReader(new FileReader(input));
             //board size
             String nextLine = br.readLine();
-            int size = Integer.parseInt(nextLine);
-            board1 = new Board(size);
-            board2 = new Board(size);
+            this.boardSize = Integer.parseInt(nextLine);
+            board1 = new Board(this.boardSize);
+            board2 = new Board(this.boardSize);
             //number of ships
             nextLine = br.readLine();
             int numShips = Integer.parseInt(nextLine);
@@ -160,6 +160,84 @@ public class BattleShipService {
             // Set file print stream.
             System.setOut(ps);
             //write the output
+            List<List<BoardCell>> boardCells1 = player1.getBoard().getBoardCells();
+            List<List<BoardCell>> boardCells2 = player2.getBoard().getBoardCells();
+            
+            System.out.println("Player1");
+            
+            for(int x=0;x<boardSize;x++) {
+                for(int y=0;y<boardSize;y++) {
+                    BoardCell curCell1 = boardCells1.get(x).get(y);
+                    Ship curShip = curCell1.getShip();
+                    BoardCell curCell2 = boardCells2.get(x).get(y);
+                    Missile curMissile = curCell2.getMissile();
+                    if(curShip!= null) {
+                        if(curShip.isKilled())
+                            System.out.print("X");
+                        else
+                            System.out.print("B");
+                    }
+                    else if(curMissile != null) {
+                        if(!curMissile.isHit())
+                            System.out.print("O");
+                        else
+                            System.out.print("_");
+                    }
+                    else {
+                        System.out.print("_");
+                    }
+                }
+                System.out.println("\n");
+            }
+            
+            System.out.println("Player2");
+            for(int x=0;x<boardSize;x++) {
+                for(int y=0;y<boardSize;y++) {
+                    BoardCell curCell2 = boardCells2.get(x).get(y);
+                    Ship curShip = curCell2.getShip();
+                    BoardCell curCell1 = boardCells1.get(x).get(y);
+                    Missile curMissile = curCell1.getMissile();
+                    if(curShip!= null) {
+                        if(curShip.isKilled())
+                            System.out.print("X");
+                        else
+                            System.out.print("B");
+                    }
+                    else if(curMissile != null) {
+                        if(!curMissile.isHit())
+                            System.out.print("O");
+                        else
+                            System.out.print("_");
+                    }
+                    else {
+                        System.out.print("_");
+                    }
+                }
+                System.out.println("\n");
+            }
+            
+            int p1Kills = player1.getKills();
+            int p2Kills = player2.getKills();
+            System.out.println("P1: "+p1Kills);
+            System.out.println("P2: "+p2Kills);
+            
+            int p1Ships = player1.getNumShips();
+            int p2Ships = player2.getNumShips();
+            if(p1Kills == p2Ships){
+                System.out.println("Player1 wins");
+            }
+            else if(p2Kills == p1Ships) {
+                System.out.println("Player2 wins");
+            }
+            else if(p1Kills == p2Kills){
+                System.out.println("It is a draw");
+            } 
+            else if(p1Kills > p2Kills){
+                System.out.println("Player1 wins");
+            }
+            else {
+                System.out.println("Player2 wins");
+            }
             System.setOut(ps_console);
 	}
 	catch(Exception e) {
