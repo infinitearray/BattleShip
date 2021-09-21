@@ -5,6 +5,8 @@
  */
 package com.gojek.battleship.model;
 
+import java.util.List;
+
 /**
  *
  * @author prabandi
@@ -31,6 +33,47 @@ public class Player {
     public Board getBoard() {
         return board;
     }
+
+    public int getKills() {
+        return this.numKills;
+    }
     
+    public void addKill() {
+        this.numKills++;
+    }
+
+    public int getNumShips() {
+        return numShips;
+    }
+
+    public void setNumShips(int numShips) {
+        this.numShips = numShips;
+    }
+
+    public int getNumMissiles() {
+        return numMissiles;
+    }
+
+    public void setNumMissiles(int numMissiles) {
+        this.numMissiles = numMissiles;
+    }
+    
+    public void setShipLocations(List<List<Integer>> shipLocations) {
+        for(List<Integer> eachShip : shipLocations){
+            int x = eachShip.get(0);
+            int y = eachShip.get(1);
+            this.board.setBoardItem(x, y, BoardItemType.SHIP);
+            numShips++;
+        }
+    }
+	
+    public void setMissileLocations(List<List<Integer>> missileLocations) {
+        for(List<Integer> eachMissile : missileLocations){
+            int x = eachMissile.get(0);
+            int y = eachMissile.get(1);
+            this.board.setBoardItem(x, y, BoardItemType.MISSILE);
+            this.numMissiles++;
+        }
+    }
     
 }

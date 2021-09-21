@@ -57,14 +57,14 @@ public class Board {
         this.missileLocations = missileLocations;
     }
     
-    public void setBoardItem(int x, int y, BoardItem item){
+    public void setBoardItem(int x, int y, BoardItemType item){
         List<Integer> temp = new ArrayList<Integer>();
         temp.add(x);
         temp.add(y);
-        if(item instanceof Ship){
+        if(BoardItemType.SHIP == item){
             this.boardCells.get(x).get(y).setShip();
             this.shipLocations.add(temp);
-        } else if(item instanceof Missile) {
+        } else if(BoardItemType.MISSILE == item) {
             this.boardCells.get(x).get(y).setMissile();
             this.missileLocations.add(temp);
         }
