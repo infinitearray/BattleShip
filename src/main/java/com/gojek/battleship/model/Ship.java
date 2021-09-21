@@ -10,7 +10,18 @@ package com.gojek.battleship.model;
  * @author prabandi
  */
 public class Ship extends BoardItem{
+    private boolean isKilled;
+    
     public Ship(BoardCell boardCell){
         super(boardCell);
-    }	
+        isKilled = false;
+    }
+    
+    public boolean isKilled() {
+        return this.isKilled;
+    }
+
+    public void setKilled() {
+        this.isKilled = true;
+    }
 }

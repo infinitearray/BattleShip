@@ -10,8 +10,18 @@ package com.gojek.battleship.model;
  * @author prabandi
  */
 public class Missile extends BoardItem{
+    private boolean isHit;
+    
     public Missile(BoardCell boardCell){
         super(boardCell);
+        this.isHit = false;
     }
-	
+    
+    public boolean isHit() {
+        return this.isHit;
+    }
+
+    public void setHit() {
+        this.isHit = true;
+    }
 }

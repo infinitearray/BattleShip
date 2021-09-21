@@ -11,4 +11,6 @@ package com.gojek.battleship;
  */
 public class Constants {
     //Constants to be used across the application
+    public static final String inputFilePath = "src/com/gojek/battleship/Input.txt";
+    public static final String outputFilePath = "src/com/gojek/battleship/Output.txt";
 }

@@ -5,6 +5,8 @@
  */
 package com.gojek.battleship;
 
+import com.gojek.battleship.model.BattleShipService;
+
 /**
  *
  * @author prabandi
@@ -12,6 +14,8 @@ package com.gojek.battleship;
 public class BattleShip {
     public static void main(String[] args) {
         //Main method
-        
+        BattleShipService game = new BattleShipService(Constants.inputFilePath);
+        game.startBattle();
+        game.finishBattle(Constants.outputFilePath);
     }
 }

@@ -20,6 +20,7 @@ public class Board {
     
     public Board(int boardSize) {
         this.boardSize = boardSize;
+        //Initialise the board with the size
         boardCells = new ArrayList<List<BoardCell>>();
         for(int i=0;i<boardSize;i++){
             List<BoardCell> row = new ArrayList<BoardCell>();
@@ -30,5 +31,42 @@ public class Board {
         }
         shipLocations = new ArrayList<List<Integer>>();
         missileLocations = new ArrayList<List<Integer>>();
+    }
+    
+    public List<List<BoardCell>> getBoardCells() {
+	return boardCells;
+    }
+
+    public void setBoardCells(List<List<BoardCell>> boardCells) {
+	this.boardCells = boardCells;
+    }
+
+    public List<List<Integer>> getShipLocations() {
+        return shipLocations;
+    }
+
+    public void setShipLocations(List<List<Integer>> shipLocations) {
+        this.shipLocations = shipLocations;
+    }
+
+    public List<List<Integer>> getMissileLocations() {
+        return missileLocations;
+    }
+
+    public void setMissileLocations(List<List<Integer>> missileLocations) {
+        this.missileLocations = missileLocations;
+    }
+    
+    public void setBoardItem(int x, int y, BoardItem item){
+        List<Integer> temp = new ArrayList<Integer>();
+        temp.add(x);
+        temp.add(y);
+        if(item instanceof Ship){
+            this.boardCells.get(x).get(y).setShip();
+            this.shipLocations.add(temp);
+        } else if(item instanceof Missile) {
+            this.boardCells.get(x).get(y).setMissile();
+            this.missileLocations.add(temp);
+        }
     }
 }
